@@ -1,14 +1,16 @@
 'use strict';
 
-var mysql = require('mysql'),
-    Schema = msyql.Schema;
+var mongoose = require('mongoose'),
+    Schema = mongoose.Schema;
 
 var ProductSchema = Schema({
     name: String,
-    brand: String,
-    price: String,
+    images: [String],
+    marca: String,
+    modelo: String,
+    precio: String,
     fecha_lanz: Date,
-    pags: String
-})
+    stores: [String]
+});
 
-module.exports = mysql.model('Product', ProductSchema);
+module.exports = mongoose.model('Product', ProductSchema);

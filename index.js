@@ -1,26 +1,12 @@
-var mysql = require('mysql');
-var app = require('./app');
-var port = '3700';
+var mongoose = require('mongoose'),
+    app = require('./app'),
+    port = '3700';
 
-var con = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "",
-    database: "propio_testwbi"
-});
+mongoose.Promise = global.Promise;
+mongoose.connect('mongodb://localhost:27017/propio_test')
+    .then(() => {
+        app.listen(port, () => {
 
-con.connect(function(err) {
-    if (err) throw err;
-    
-
-    app.listen(port, () => {
-       
-    });
-    /*
-    var sql = "SELECT * FROM products";
-    con.query(sql, function (err, result) {
-        if (err) throw err;
-        console.table(result);
-      });
-      */
-});
+        });
+    })
+    .catch(err => console.log(err));
