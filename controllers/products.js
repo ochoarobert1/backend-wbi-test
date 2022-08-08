@@ -60,7 +60,7 @@ var controller = {
         });
     },
     getProducts: function(req, res) {
-        Product.find({}).exec((err, products) => {
+        Product.find({}).sort().exec((err, products) => {
             if (err) return res.status(500).send({
                 message: 'Error al devolver los datos'
             });
