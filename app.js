@@ -17,5 +17,7 @@ app.use(bodyParser.json());
 app.use('/', product_routes);
 app.use('/test', product_routes);
 app.use('/save-product', product_routes);
+app.use('/product', product_routes);
+app.use('/products', product_routes);
 
 module.exports = app;
